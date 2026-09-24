@@ -41,9 +41,9 @@ export default function IdentityAspirationsGraph({ isDarkMode = false }: Identit
         try {
           const topics = JSON.parse(savedTopicsStr);
           if (Array.isArray(topics) && topics.length > 0) {
-            setData(topics.map((topic, index) => {
+            setData(topics.map((topic: string, index: number) => {
               const targets = [95, 90, 85, 92, 96];
-              const targetVal = targets[index % targets.length];
+              const targetVal = targets[index % targets.length] ?? 90;
               return {
                 subject: topic,
                 Target: targetVal,

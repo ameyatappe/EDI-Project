@@ -39,7 +39,7 @@ export default async function POST(req: Request) {
             userAspiration: z.string(),
             estimatedDurationMinutes: z.number()
           }),
-          execute: async ({ topic, userAspiration, estimatedDurationMinutes }) => {
+          execute: async ({ topic, userAspiration, estimatedDurationMinutes }: { topic: string, userAspiration: string, estimatedDurationMinutes: number }) => {
             return {
               topic,
               score: 88,
@@ -54,7 +54,7 @@ export default async function POST(req: Request) {
             stressIndicator: z.string(),
             recommendedRestMinutes: z.number(),
           }),
-          execute: async ({ stressIndicator, recommendedRestMinutes }) => {
+          execute: async ({ stressIndicator, recommendedRestMinutes }: { stressIndicator: string, recommendedRestMinutes: number }) => {
             // ADD IT RIGHT HERE:
             console.log(`🚨 [BACKEND TRIGGERED] Burnout Shield active! Reason: ${stressIndicator}`);
 

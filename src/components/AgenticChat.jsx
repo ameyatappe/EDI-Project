@@ -315,13 +315,13 @@ export default function AgenticChat() {
           const lang = match ? match[1] || '' : '';
           const codeContent = match ? match[2] : part.slice(3, -3);
           return (
-            <div key={idx} className="my-3 rounded-xl bg-slate-950 border border-white/10 overflow-hidden font-mono text-xs shadow-lg">
+            <div key={idx} className="my-3 rounded-xl bg-slate-950 border border-white/10 overflow-hidden font-mono text-xs shadow-lg max-w-full">
               {lang && (
                 <div className="px-3 py-1 bg-white/5 border-b border-white/5 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
                   {lang}
                 </div>
               )}
-              <pre className="p-3 text-emerald-300 overflow-x-auto whitespace-pre leading-relaxed">
+              <pre className="p-3 text-emerald-300 overflow-x-auto whitespace-pre leading-relaxed w-full">
                 <code>{codeContent.trim()}</code>
               </pre>
             </div>
@@ -393,7 +393,7 @@ export default function AgenticChat() {
       <div 
         ref={scrollContainerRef}
         onScroll={handleScroll}
-        className="flex-1 p-4 overflow-y-auto flex flex-col gap-4 select-text scroll-smooth"
+        className="flex-1 min-h-0 p-4 overflow-y-auto overflow-x-hidden flex flex-col gap-4 select-text scroll-smooth pb-12"
       >
         {messages.map((msg) => {
           const isUser = msg.role === 'user';
@@ -414,7 +414,7 @@ export default function AgenticChat() {
               </div>
 
               {/* Message Bubble */}
-              <div className={`p-3 rounded-2xl border text-sm shadow-sm ${
+              <div className={`p-3 rounded-2xl border text-sm shadow-sm overflow-x-auto min-w-0 max-w-full ${
                 isUser 
                   ? 'bg-indigo-600/90 border-indigo-500/30 text-white rounded-tr-sm' 
                   : `${AGENT_PERSONAS[msg.agentId]?.bubbleColor || 'bg-brand-card border-white/5'} rounded-tl-sm`
