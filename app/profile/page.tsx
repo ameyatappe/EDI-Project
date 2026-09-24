@@ -22,6 +22,7 @@ import AspirationPivotAlert from './components/AspirationPivotAlert';
 interface ProfileVpmDashboardProps {
   isDarkMode?: boolean;
   currentUser?: {
+    id?: string;
     name?: string;
     email?: string;
     avatar?: string;
@@ -428,7 +429,7 @@ export default function ProfileVpmDashboard({ isDarkMode = false, currentUser }:
                 'from-pink-500 to-rose-500'
               ];
               const gradient = colors[i % colors.length];
-              const progress = [100, 75, 25, 0][i];
+              const progress = [100, 75, 25, 0][i] ?? 0;
               
               return (
                 <div key={i} className={`rounded-2xl p-5 border flex flex-col gap-4 justify-between transition-all duration-300 hover:scale-[1.02] shadow-xs hover:shadow-md ${

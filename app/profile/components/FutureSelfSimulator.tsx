@@ -60,17 +60,16 @@ export default function FutureSelfSimulator({
   
   const xpNum = parseInt(userXP, 10) || 0;
   
-  // Extract hours from focusTime string like "1h 25m"
   const hoursMatch = focusTime.match(/(\d+)h/);
   const minsMatch = focusTime.match(/(\d+)m/);
-  const hours = hoursMatch ? parseInt(hoursMatch[1], 10) : 0;
-  const mins = minsMatch ? parseInt(minsMatch[1], 10) : 0;
+  const hours = hoursMatch ? parseInt(hoursMatch[1] ?? '0', 10) : 0;
+  const mins = minsMatch ? parseInt(minsMatch[1] ?? '0', 10) : 0;
   const totalFocusHours = hours + (mins / 60);
 
   const projectionData = generateProjectionData(xpNum, totalFocusHours);
   
-  const targetAspiration = projectionData[5].AspirationTrend;
-  const targetPassive = projectionData[5].PassiveTrend;
+  const targetAspiration = projectionData[5]?.AspirationTrend ?? 0;
+  const targetPassive = projectionData[5]?.PassiveTrend ?? 0;
 
   return (
     <div className={`relative overflow-hidden rounded-3xl border p-6 shadow-sm flex flex-col justify-between gap-6 transition-all ${
